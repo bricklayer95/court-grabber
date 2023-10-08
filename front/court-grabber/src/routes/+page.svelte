@@ -75,8 +75,8 @@
 </div>
 
 <div class="w-screen py-20 gap-24 light-green-bg flex flex-col items-center justify-center overflow-hidden">
-    <img class="w-full h-4/5 mix-blend-overlay absolute z-10" src={bgOverlay} />
-    <div class="flex w-5/6 second-top-height flex-col md:flex-row px-12 md:px-0 items-center">
+    <img class="w-full h-screen mix-blend-overlay absolute z-10" src={bgOverlay} />
+    <div class="flex md:w-5/6 second-top-height flex-col md:flex-row px-4 items-center">
         <div id="detailed-pricing" class="w-full overflow-x-auto">
             <div class="overflow-hidden">
                 <div class="grid grid-cols-4 p-4 text-lg font-semibold text-gray-900 normal-bg gap-x-16">
