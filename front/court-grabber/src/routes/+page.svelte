@@ -37,13 +37,13 @@
     <img class="w-full h-full mix-blend-overlay absolute z-10" src={bgOverlay} />
 
     <div class="darkest py-3 nav mt-6 rounded-full border border-gray-600 flex items-center px-7 justify-between">
-        <p class="light-green-text header text-2xl">court<span class="normal-text">Grabber</span></p>
+        <p class="light-green-text header text-2xl">court<span class="normal-text">Booker</span></p>
         <a class="light-green-text join-link" href="">Join</a>
     </div>
 
     <div class="w-full px-9 md:px-20">
-        <h1 class="light-green-text mt-16 md:mt-20">Bank Payments done in no time with encryption hard as a rock.<!--<span class="flex flex-col justify-center"><div class="cool-border"><div class="inner-cool-border"></div></div> hard as rock.</span>--></h1>
-        <h2 class="text-gray-400 w-full mb-12 mt-3 ">Get paid directly to your bank account. No cards needed.</h2>
+        <h1 class="light-green-text mt-16 md:mt-20">Say goodbye to the hassle of booking tennis courts. No planning needed.<!--<span class="flex flex-col justify-center"><div class="cool-border"><div class="inner-cool-border"></div></div> hard as rock.</span>--></h1>
+        <h2 class="text-gray-400 w-full mb-12 mt-3 ">Our software automatically books courts, so you never have to to worry about securing a court ahead of others.</h2>
     
 
         <div class="relative z-20 w-full md:w-1/2 foldInput bg-transparent border border-gray-500 rounded-full">
@@ -52,45 +52,63 @@
         </div>
     </div>
 
-    <div class="hidden md:flex flex-col w-full absolute bottom-0 companiesHeight">
-        <p class="text-center text-gray-400 -mt-4 md:-mb-6">Given the enormous support from top global leaders</p>
-        <div class="flex w-full h-full px-10 md:px-20 flex-wrap">
-            <div class="w-1/3 md:flex-1 flex items-center justify-center">
-                <img class="p-2 w-5/6 md:w-2/5 h-auto" src={ebay} alt="Ebay Logo">
+    <div class="hidden md:flex flex-col w-full companiesHeight gap-16 absolute bottom-0">
+        <p class="text-center text-2xl md:text-3xl semibold text-gray-400 md:-mb-8">Courts We Support</p>
+        <div class="flex w-full px-10 md:px-20 flex-wrap">
+            <div class="px-2 w-1/3 md:flex-1 flex items-center justify-center">
+                <p class="text-2xl md:text-3xl light-green-text semibold">Latta Park</p>
             </div>
-            <div class="w-1/3 md:flex-1 flex items-center justify-center">
-                <img class="p-2 w-4/6 md:w-2/5 h-auto" src={cnn} alt="">
+            <div class="px-2 w-1/3 md:flex-1 flex items-center justify-center">
+                <p class="text-2xl md:text-3xl light-green-text semibold">Freedom Park</p>
             </div>
-            <div class="w-1/3 md:flex-1 flex items-center justify-center">
-                <img class="p-2 w-5/6 md:w-2/5 h-auto" src={google} alt="">
+            <div class="px-2 w-1/3 md:flex-1 flex items-center justify-center">
+                <p class="text-2xl md:text-3xl light-green-text semibold">Veterans Park</p>
             </div>
-            <div class="w-1/3 md:flex-1 flex items-center justify-center">
-                <img class="p-2 w-5/6 md:w-2/5 h-auto" src={cisco} alt="">
+            <div class="px-2 w-1/3 md:flex-1 flex items-center justify-center">
+                <p class="text-2xl md:text-3xl light-green-text semibold">Jeff Adams</p>
             </div>
-            <div class="w-1/3 md:flex-1 flex items-center justify-center">
-                <img class="p-2 w-5/6 md:w-2/5 h-auto" src={airbnb} alt="">
-            </div>
-            <div class="w-1/3 md:flex-1 flex items-center justify-center">
-                <img class="p-2 w-5/6 md:w-2/5 h-auto" src={uber} alt="">
+            <div class="px-2 w-1/3 md:flex-1 flex items-center justify-center">
+                <p class="text-2xl md:text-3xl light-green-text semibold">Many More</p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="w-screen h-screen light-green-bg flex flex-col items-center justify-center overflow-hidden">
-    <img class="w-full h-full mix-blend-overlay absolute z-10" src={bgOverlay} alt="Big Zero">
-    <div class="flex w-full second-top-height flex-col md:flex-row px-12 md:px-0">
-        <div class="w-full md:w-1/2 h-full">
-            <h3 class="normal-text zero text-center">0</h3>
-        </div>
-        <div class="w-full md:w-1/2 second-top-height flex flex-col justify-center gap-10 my-14">
-            <h4 class="normal-text text-5xl md:text-7xl">transaction fees.</h4>
-            <h4 class="normal-text text-5xl md:text-7xl">maintenance fees.</h4>
-            <h4 class="normal-text text-5xl md:text-7xl">charge backs.</h4>
-            <h4 class="normal-text text-5xl md:text-7xl">forex fees.</h4>
-            <h4 class="normal-text text-5xl md:text-7xl">cards required.</h4>
+<div class="w-screen py-20 gap-24 light-green-bg flex flex-col items-center justify-center overflow-hidden">
+    <img class="w-full h-4/5 mix-blend-overlay absolute z-10" src={bgOverlay} />
+    <div class="flex w-5/6 second-top-height flex-col md:flex-row px-12 md:px-0 items-center">
+        <div id="detailed-pricing" class="w-full overflow-x-auto">
+            <div class="overflow-hidden">
+                <div class="grid grid-cols-4 p-4 text-lg font-semibold text-gray-900 normal-bg gap-x-16">
+                    <div class="flex items-center">Details</div>
+                    <div>Parks and Rec Rules</div>
+                    <div>Court Booker</div>
+                </div>
+                <div class="grid grid-cols-4 px-6 py-6 text-lg text-gray-700 border-b border-gray-200 gap-x-16">
+                    <div class="text-gray-500">Booking Window</div>
+                    <div class="normal-text medium text-xl">Must Reserve <span class="text-red-500">6 Days Ahead</span></div>
+                    <div class="normal-text medium text-xl"><span class="text-green-800">5 Minutes</span> Ahead</div>
+                </div>
+                <div class="grid grid-cols-4 px-6 py-6 text-lg text-gray-700 border-b border-gray-200 gap-x-16">
+                    <div class="text-gray-500">Cancellation Policy</div>
+                    <div class="normal-text medium text-xl"><span class="text-red-500">10 Days</span> in Advance</div>
+                    <div class="normal-text medium text-xl"><span class="text-green-800">10 Minutes</span> in Advance</div>
+                </div>
+                <div class="grid grid-cols-4 px-6 py-6 text-lg text-gray-700 border-b border-gray-200 gap-x-16">
+                    <div class="text-gray-500">Maximum Session Length</div>
+                    <div class="normal-text medium text-xl"><span class="text-red-500">1 Hour</span></div>
+                    <div class="normal-text medium text-xl">No Time Limit</div>
+                </div>
+                <div class="grid grid-cols-4 px-6 py-6 text-lg text-gray-700 border-b border-gray-200 gap-x-16">
+                    <div class="text-gray-500">Sessions Per Day</div>
+                    <div class="normal-text medium text-xl">Up to <span class="text-red-500">2</span></div>
+                    <div class="normal-text medium text-xl">No Limit</div>
+                </div>
+            </div>
         </div>
     </div>
+    
+
 
     <div class="hidden md:block md:relative z-20 inputBelowZero md:w-1/2 foldInput bg-transparent border border-gray-500 rounded-full">
         <input class="w-full h-full bg-transparent z-20 md:placeholder:text-xl pl-4" type="text" placeholder="Email address">
@@ -100,44 +118,43 @@
 
 <div class="w-screen h-5/6 darkGreen md:px-32 py-24 flex flex-col items-center gap-8 overflow-hidden">
     <h5 class="light-green-text faq text-4xl w-5/6 md:w-4/6">Frequently Asked Questions</h5>
-
-    <div class="faq-container light-green-text w-5/6 md:w-4/6" on:click={()=>{toggleFaq(1)}}>
-        <h6 class="faq-title text-2xl">What is ezePay?</h6>
+    <div class="z-30 faq-container light-green-text w-5/6 md:w-4/6" on:click={()=>{toggleFaq(1)}}>
+        <h6 class="faq-title text-2xl">How does CourtBooker work?</h6>
         <div class="w-full flex items-center justify-between mb-4">
-            <p class="faq-answer text-md mt-3 w-5/6">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam nec auctor tellus. Sed pellentesque vitae arcu sit amet cursus. In nisl sem, varius ut metus ac, pulvinar rhoncus velit. Nulla malesuada in felis vitae porta. Praesent vitae lacinia risus. Suspendisse eros turpis, finibus nec erat et, aliquet vehicula nunc. </p>
+            <p class="faq-answer text-md mt-3 w-5/6">CourtBooker leverages cutting-edge software to reserve tennis courts the moment they become available. We adapt to the demand, ensuring there's always a court waiting for you. Say goodbye to the frustration of needing to book courts a week ahead. CourtBooker is here to make playing tennis more convenient and affordable for busy tennis enthusiasts.</p>
             <img class="h-14 faq-icon" src={faqIcon} alt="FAQ Icon">
         </div>
         <hr>
     </div>
 
-    <div class="faq-container light-green-text w-5/6 md:w-4/6" on:click={()=>{toggleFaq(2)}}>
-        <h6 class="faq-title text-2xl">What is ezePay?</h6>
+    <div class="z-30 faq-container light-green-text w-5/6 md:w-4/6" on:click={()=>{toggleFaq(2)}}>
+        <h6 class="faq-title text-2xl">What is CourtBooker?</h6>
         <div class="w-full flex items-center justify-between mb-4 closed">
-            <p class="faq-answer text-md mt-3 w-5/6">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam nec auctor tellus. Sed pellentesque vitae arcu sit amet cursus. In nisl sem, varius ut metus ac, pulvinar rhoncus velit. Nulla malesuada in felis vitae porta. Praesent vitae lacinia risus. Suspendisse eros turpis, finibus nec erat et, aliquet vehicula nunc. </p>
+            <p class="faq-answer text-md mt-3 w-5/6">CourtBooker is your personal tennis court booking assistant in Charlotte. Forget about the hassle of planning your tennis games a week in advance. With CourtBooker, we do the hard work for you. Whether you're lacing up your shoes, making last-minute plans, or heading to the courts, CourtBooker ensures you get the court you want in minutes.</p>
             <img class="h-14 faq-icon" style="transform: rotate(180deg);" src={faqIcon} alt="FAQ Icon">
         </div>
         <hr>
     </div>
 
-    <div class="faq-container light-green-text w-5/6 md:w-4/6" on:click={()=>{toggleFaq(3)}}>
-        <h6 class="faq-title text-2xl">What is ezePay?</h6>
+    <div class="z-30 faq-container light-green-text w-5/6 md:w-4/6" on:click={()=>{toggleFaq(3)}}>
+        <h6 class="faq-title text-2xl">Why did we create CourtBooker?</h6>
         <div class="w-full flex items-center justify-between mb-4 closed">
-            <p class="faq-answer text-md mt-3 w-5/6">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam nec auctor tellus. Sed pellentesque vitae arcu sit amet cursus. In nisl sem, varius ut metus ac, pulvinar rhoncus velit. Nulla malesuada in felis vitae porta. Praesent vitae lacinia risus. Suspendisse eros turpis, finibus nec erat et, aliquet vehicula nunc. </p>
+            <p class="faq-answer text-md mt-3 w-5/6">We founded CourtBooker because we understand the challenges of fitting tennis into our busy lives. Traditional reservation systems can be a nightmare to navigate. CourtBooker empowers everyone to schedule games on their terms, making tennis accessible and enjoyable for all.</p>
             <img class="h-14 faq-icon" style="transform: rotate(180deg);" src={faqIcon} alt="FAQ Icon">
         </div>
         <hr>
     </div>
 
-    <div class="faq-container light-green-text w-5/6 md:w-4/6" on:click={()=>{toggleFaq(4)}}>
-        <h6 class="faq-title text-2xl">What is ezePay?</h6>
+    <div class="z-30 faq-container light-green-text w-5/6 md:w-4/6" on:click={()=>{toggleFaq(4)}}>
+        <h6 class="faq-title text-2xl">Where does your money go?</h6>
         <div class="w-full flex items-center justify-between mb-4 closed" >
-            <p class="faq-answer text-md mt-3 w-5/6">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam nec auctor tellus. Sed pellentesque vitae arcu sit amet cursus. In nisl sem, varius ut metus ac, pulvinar rhoncus velit. Nulla malesuada in felis vitae porta. Praesent vitae lacinia risus. Suspendisse eros turpis, finibus nec erat et, aliquet vehicula nunc. </p>
+            <p class="faq-answer text-md mt-3 w-5/6">CourtBooker charges a modest subscription fee to provide you with the convenience of booking courts just minutes before you play. The revenue generated is reinvested to reserve more courts at various parks, ensuring reliable access to tennis for everyone in our community. Your support helps us expand and improve the tennis experience for all players.</p>
             <img class="h-14 faq-icon" style="transform: rotate(180deg);" src={faqIcon} alt="FAQ Icon">
         </div>
         <hr>
     </div>
 
-    <div class="relative z-20 inputBelowZero md:w-1/2 foldInput bg-transparent border border-gray-500 rounded-full">
+    <div class="relative z-20 inputBelowZero foldInput bg-transparent border border-gray-500 rounded-full">
         <input class="w-full h-full bg-transparent z-20 md:placeholder:text-xl pl-4" type="text" placeholder="Email address">
         <button on:click={joinWaitlist} class="z-50 right-0 absolute h-full w-fit px-4 md:px-8 rounded-full light-green-border light-green-text darkest underline join-btn md:text-xl">Join the waitlist</button>
     </div>
@@ -150,7 +167,6 @@
     footer{
         width: 100%;
     }
-
 
     .closed{
         justify-content: flex-end;
@@ -180,7 +196,7 @@
         border: none;
     }
 
-    .faq-title{
+    .faq-title, .regular{
         font-family: 'ClashGrotesk-Regular';
     }
 
@@ -188,7 +204,7 @@
         font-family: 'ClashGrotesk-Extralight';
     }
 
-    .faq{
+    .faq, .semibold{
         font-family: 'ClashGrotesk-SemiBold';
     }
 
@@ -227,6 +243,10 @@
         height: 3.7rem;
     }
 
+    .medium{
+        font-family: 'ClashGrotesk-Medium';
+    }
+
     .foldInput input{
         font-family: 'ClashGrotesk-Medium';
         color: rgb(157, 170, 188);
@@ -263,33 +283,46 @@
         font-size: 1.3rem;
     }
 
+    
+
     @media (min-width: 768px) { 
-        h1{
-            font-size: 5.5rem;
-        }
-
-        h2{
-        font-size: 1.5rem;
-        }
-
-        .foldInput{
-            height: 3.9rem;
-        }
-
-        .foldInput input{
-            font-size: 1.2rem;
-        }
-
-        .zero{
-        -webkit-text-stroke: 1px #40916C;
-        font-size: 55rem;
-        line-height: 0.75;
-        }
-
-        .inputBelowZero{
-            width: 50%;
-        }
+    h1 {
+        font-size: 5.4rem;
     }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .foldInput {
+        height: 3.9rem;
+    }
+
+    .foldInput input {
+        font-size: 1.2rem;
+    }
+
+    .zero {
+        -webkit-text-stroke: 1px #40916C;
+        font-size: 5rem; /* Updated font size to be consistent */
+        line-height: 0.75;
+    }
+
+    .inputBelowZero {
+        width: 70%;
+    }
+}
+
+@media (max-width: 900px) { 
+    h1 {
+        font-size: 4rem;
+    }
+
+    .foldInput{
+        width: 90%;
+    }
+}
+
 
     .light-green-text{
         color: #95D5B2;
@@ -316,6 +349,10 @@
 
     .nav{
         width: 90%;
+    }
+
+    .normal-bg{
+        background: #40916C;
     }
 
     .normal-text{
