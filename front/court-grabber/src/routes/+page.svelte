@@ -275,12 +275,12 @@
 
     h1{
         font-family: 'ClashGrotesk-Medium';
-        font-size: 3.8rem;
+        font-size: 3.5rem;
         line-height: 1;
     }
 
     h2{
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
     
@@ -315,7 +315,7 @@
 
 @media (max-width: 900px) { 
     h1 {
-        font-size: 4rem;
+        font-size: 3.3rem;
     }
 
     .foldInput{
