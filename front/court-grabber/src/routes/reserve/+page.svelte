@@ -1,7 +1,7 @@
 <script>
     import SidebarNav from '$lib/components/SidebarNav.svelte';
 
-    let step = 2;
+    let step = 1;
 </script>
 
 <SidebarNav/>

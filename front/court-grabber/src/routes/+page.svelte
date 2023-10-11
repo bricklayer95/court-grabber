@@ -8,8 +8,17 @@
     import uber from '$lib/assets/uber.png';
     import faqIcon from '$lib/assets/faqIcon.png';
     import db from '$lib/firebase';
-    import { addDoc, collection } from 'firebase/firestore';
+    import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
+    let modalOpen = false;
+
+    let openModal = () =>{
+        modalOpen = true;
+    }
+
+    let closeModal = () =>{
+        modalOpen = false;
+    }
 
     let toggleFaq = (nth) =>{
         let allDivs = document.querySelectorAll('.faq-container');
@@ -24,17 +33,26 @@
         let emailInput = e.target.parentElement.children[0];
         let email = emailInput.value;
         await addDoc(collection(db, "signUp"), {
-            email: email
+            email: email, 
+            timestamp: serverTimestamp()
         });
         emailInput.value = '';
-        alert(`The email - ${email} has sucessfully been added to the waitlist.`);
-    }
-
-    
+        openModal();
+    }  
 </script>
 
 <div class="w-screen h-screen darkGreen flex flex-col items-center overflow-hidden">
     <img class="w-full h-full mix-blend-overlay absolute z-10" src={bgOverlay} />
+
+    {#if modalOpen}
+        <div class="modal-container">
+            <div class="modal rounded-3xl z-50 darkest fullOpacity absolute w-5/6 md:w-4/6 lg:w-1/2 h-1/2 top-1/2 -translate-y-1/2 px-5 py-6 flex flex-col gap-1 items-center">
+                <p class="text-white text-5xl md:text-6xl medium">Thank You for Joining the Waitlist!</p>
+                <p class="text-gray-400 text-xl md:text-2xl medium w-full">Exciting news is on the horizon - we're gearing up to release the full website very soon!</p>
+                <button class="shadow-2xl absolute bottom-6 right-8 light-green-bg text-black transform p-4 rounded-xl self-end font-semibold" on:click={closeModal}>Close</button>
+            </div>
+        </div>
+    {/if}
 
     <div class="darkest py-3 nav mt-6 rounded-full border border-gray-600 flex items-center px-7 justify-between">
         <p class="light-green-text header text-2xl">court<span class="normal-text">Booker</span></p>
@@ -43,12 +61,14 @@
 
     <div class="w-full px-9 md:px-20">
         <h1 class="light-green-text mt-16 md:mt-20">Say goodbye to the hassle of booking tennis courts. No planning needed.<!--<span class="flex flex-col justify-center"><div class="cool-border"><div class="inner-cool-border"></div></div> hard as rock.</span>--></h1>
-        <h2 class="text-gray-400 w-full mb-12 mt-3 ">Our software automatically books courts, so you never have to to worry about securing a court ahead of others.</h2>
+        <h2 class="text-gray-400 w-full mb-12 mt-3 ">Our software automatically books courts, so you never have to to worry about securing a court ahead of others. Enter your email below to get early access.</h2>
     
 
         <div class="relative z-20 w-full md:w-1/2 foldInput bg-transparent border border-gray-500 rounded-full flex">
-            <input class="flex-1 h-full bg-transparent z-20 md:placeholder:text-xl pl-4" type="text" placeholder="Email address">
-            <button on:click={joinWaitlist} class="z-50 h-full w-auto px-4 md:px-8 rounded-full light-green-border light-green-text darkest underline join-btn md:text-xl">Join the waitlist</button>
+            <input class="pr-2 flex-1 h-full bg-transparent z-20 md:placeholder:text-xl pl-4" type="text" placeholder="Email address">
+            <button on:click={joinWaitlist} class="whitespace-nowrap z-50 h-full px-4 md:px-8 rounded-full light-green-border light-green-text darkest underline join-btn md:text-xl">
+                Get Early Access
+              </button>
         </div>
     </div>
 
@@ -110,9 +130,11 @@
     
 
 
-    <div class="hidden md:flex relative z-20 w-full md:w-1/2 foldInput bg-transparent border border-gray-500 rounded-full">
-        <input class="flex-1 h-full bg-transparent z-20 md:placeholder:text-xl pl-4" type="text" placeholder="Email address">
-        <button on:click={joinWaitlist} class="z-50 h-full w-auto px-4 md:px-8 rounded-full light-green-border light-green-text darkest underline join-btn md:text-xl">Join the waitlist</button>
+    <div class="relative z-20 w-full md:w-1/2 foldInput bg-transparent border border-gray-500 rounded-full flex">
+        <input class="pr-2 flex-1 h-full bg-transparent z-20 md:placeholder:text-xl pl-4" type="text" placeholder="Email address">
+        <button on:click={joinWaitlist} class="whitespace-nowrap z-50 h-full px-4 md:px-8 rounded-full light-green-border light-green-text darkest underline join-btn md:text-xl">
+            Get Early Access
+          </button>
     </div>
 </div>
 
@@ -155,8 +177,10 @@
     </div>
 
     <div class="relative z-20 w-full md:w-1/2 foldInput bg-transparent border border-gray-500 rounded-full flex">
-        <input class="flex-1 h-full bg-transparent z-20 md:placeholder:text-xl pl-4" type="text" placeholder="Email address">
-        <button on:click={joinWaitlist} class="z-50 h-full w-auto px-4 md:px-8 rounded-full light-green-border light-green-text darkest underline join-btn md:text-xl">Join the waitlist</button>
+        <input class="pr-2 flex-1 h-full bg-transparent z-20 md:placeholder:text-xl pl-4" type="text" placeholder="Email address">
+        <button on:click={joinWaitlist} class="whitespace-nowrap z-50 h-full px-4 md:px-8 rounded-full light-green-border light-green-text darkest underline join-btn md:text-xl">
+            Get Early Access
+          </button>
     </div>
 </div>
 
@@ -164,6 +188,22 @@
 
 
 <style>
+    .modal-container{
+        position: fixed;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* Semi-transparent black background for the blur */
+        backdrop-filter: blur(5px); /* Add a blur effect to the background */
+        justify-content: center;
+        align-items: center;
+        z-index: 50;
+    }
+
+    .modal-container div{
+        z-index: 51;
+    }
+
     footer{
         width: 100%;
     }
@@ -345,6 +385,10 @@
     .darkest{
         background: #1B152D;
         opacity: 0.8;
+    }
+
+    .fullOpacity{
+        opacity: 1;
     }
 
     .nav{
