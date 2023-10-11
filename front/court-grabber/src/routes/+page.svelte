@@ -46,9 +46,9 @@
         <h2 class="text-gray-400 w-full mb-12 mt-3 ">Our software automatically books courts, so you never have to to worry about securing a court ahead of others.</h2>
     
 
-        <div class="relative z-20 w-full md:w-1/2 foldInput bg-transparent border border-gray-500 rounded-full">
-            <input class="w-full h-full bg-transparent z-20 md:placeholder:text-xl pl-4" type="text" placeholder="Email address">
-            <button on:click={joinWaitlist} class="z-50 right-0 absolute h-full w-fit px-4 md:px-8 rounded-full light-green-border light-green-text darkest underline join-btn md:text-xl">Join the waitlist</button>
+        <div class="relative z-20 w-full md:w-1/2 foldInput bg-transparent border border-gray-500 rounded-full flex">
+            <input class="flex-1 h-full bg-transparent z-20 md:placeholder:text-xl pl-4" type="text" placeholder="Email address">
+            <button on:click={joinWaitlist} class="z-50 h-full w-auto px-4 md:px-8 rounded-full light-green-border light-green-text darkest underline join-btn md:text-xl">Join the waitlist</button>
         </div>
     </div>
 
@@ -110,9 +110,9 @@
     
 
 
-    <div class="hidden md:block md:relative z-20 inputBelowZero md:w-1/2 foldInput bg-transparent border border-gray-500 rounded-full">
-        <input class="w-full h-full bg-transparent z-20 md:placeholder:text-xl pl-4" type="text" placeholder="Email address">
-        <button on:click={joinWaitlist} class="z-50 right-0 absolute h-full w-fit px-4 md:px-8 rounded-full light-green-border light-green-text darkest underline join-btn md:text-xl">Join the waitlist</button>
+    <div class="hidden md:flex relative z-20 w-full md:w-1/2 foldInput bg-transparent border border-gray-500 rounded-full">
+        <input class="flex-1 h-full bg-transparent z-20 md:placeholder:text-xl pl-4" type="text" placeholder="Email address">
+        <button on:click={joinWaitlist} class="z-50 h-full w-auto px-4 md:px-8 rounded-full light-green-border light-green-text darkest underline join-btn md:text-xl">Join the waitlist</button>
     </div>
 </div>
 
@@ -154,9 +154,9 @@
         <hr>
     </div>
 
-    <div class="relative z-20 inputBelowZero foldInput bg-transparent border border-gray-500 rounded-full">
-        <input class="w-full h-full bg-transparent z-20 md:placeholder:text-xl pl-4" type="text" placeholder="Email address">
-        <button on:click={joinWaitlist} class="z-50 right-0 absolute h-full w-fit px-4 md:px-8 rounded-full light-green-border light-green-text darkest underline join-btn md:text-xl">Join the waitlist</button>
+    <div class="relative z-20 w-full md:w-1/2 foldInput bg-transparent border border-gray-500 rounded-full flex">
+        <input class="flex-1 h-full bg-transparent z-20 md:placeholder:text-xl pl-4" type="text" placeholder="Email address">
+        <button on:click={joinWaitlist} class="z-50 h-full w-auto px-4 md:px-8 rounded-full light-green-border light-green-text darkest underline join-btn md:text-xl">Join the waitlist</button>
     </div>
 </div>
 
