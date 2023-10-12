@@ -32,6 +32,13 @@
     let joinWaitlist = async (e) =>{
         let emailInput = e.target.parentElement.children[0];
         let email = emailInput.value;
+
+        if (!email){
+            alert('Please enter an email') 
+            return;
+        }
+
+
         await addDoc(collection(db, "signUp"), {
             email: email, 
             timestamp: serverTimestamp()
@@ -60,8 +67,8 @@
     </div>
 
     <div class="w-full px-9 md:px-20">
-        <h1 class="light-green-text mt-16 md:mt-20">Say goodbye to the hassle of booking tennis courts. No planning needed.<!--<span class="flex flex-col justify-center"><div class="cool-border"><div class="inner-cool-border"></div></div> hard as rock.</span>--></h1>
-        <h2 class="text-gray-400 w-full mb-12 mt-3 ">Our software automatically books courts, so you never have to to worry about securing a court ahead of others. Enter your email below to get early access.</h2>
+        <h1 class="light-green-text mt-8 md:mt-20">Say goodbye to the hassle of booking tennis courts. No planning needed.<!--<span class="flex flex-col justify-center"><div class="cool-border"><div class="inner-cool-border"></div></div> hard as rock.</span>--></h1>
+        <h2 class="text-gray-400 w-full mb-12 mt-3 ">Our software automatically books courts, so you never have to to worry about securing a court ahead of others. Get early access below.</h2>
     
 
         <div class="relative z-20 w-full md:w-1/2 foldInput bg-transparent border border-gray-500 rounded-full flex">
@@ -94,8 +101,8 @@
     </div>
 </div>
 
-<div class="w-screen py-20 gap-24 light-green-bg flex flex-col items-center justify-center overflow-hidden">
-    <img class="w-full h-screen mix-blend-overlay absolute z-10" src={bgOverlay} />
+<div class="w-screen py-20 gap-24 light-green-bg flex flex-col items-center justify-center h-fit">
+    <img class="w-full h-full mix-blend-overlay absolute z-10" src={bgOverlay} />
     <div class="flex md:w-5/6 second-top-height flex-col md:flex-row px-4 items-center">
         <div id="detailed-pricing" class="w-full overflow-x-auto">
             <div class="overflow-hidden">
