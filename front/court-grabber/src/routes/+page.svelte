@@ -9,6 +9,7 @@
     import faqIcon from '$lib/assets/faqIcon.png';
     import db from '$lib/firebase';
     import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+    import { track } from '@vercel/analytics';
 
     let modalOpen = false;
 
@@ -44,6 +45,7 @@
             timestamp: serverTimestamp()
         });
         emailInput.value = '';
+        track('Join_Waitlist');
         openModal();
     }  
 </script>
