@@ -50,7 +50,7 @@
     }  
 </script>
 
-<div class="w-screen h-screen darkGreen flex flex-col items-center overflow-hidden">
+<div class="w-screen h-screen darkGreen flex flex-col items-center overflow-auto">
     <img class="w-full h-full mix-blend-overlay absolute z-10" src={bgOverlay} />
 
     {#if modalOpen}
