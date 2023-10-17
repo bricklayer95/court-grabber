@@ -1,15 +1,25 @@
-import { initializeApp } from "firebase/app";
+import { deleteApp, getApp, getApps, initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from 'firebase/auth';
+
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD3bnYc3nRujmp68hgOJMB3r2ma63OPFk8",
-    authDomain: "court-booker-waitlist.firebaseapp.com",
-    projectId: "court-booker-waitlist",
-    storageBucket: "court-booker-waitlist.appspot.com",
-    messagingSenderId: "833391686735",
-    appId: "1:833391686735:web:7ecc9f4cf198b5a8d1a63a"
+    apiKey: import.meta.env.VITE_FIREBASE_APIKEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTHDOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECTID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGEBUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGINGSENDERID,
+    appId: import.meta.env.VITE_FIREBASE_APPID
   };
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  export default db;
+  let firebaseApp;
+    if (!getApps().length) {
+        firebaseApp = initializeApp(firebaseConfig)
+    } else {
+        firebaseApp = getApp()
+        deleteApp(firebaseApp)
+        firebaseApp = initializeApp(firebaseConfig)
+    }
+
+    export const db = getFirestore(firebaseApp)
+    export const auth = getAuth(firebaseApp)

@@ -7,7 +7,7 @@
     import airbnb from '$lib/assets/airbnb.png';
     import uber from '$lib/assets/uber.png';
     import faqIcon from '$lib/assets/faqIcon.png';
-    import db from '$lib/firebase';
+    import {db} from '$lib/firebase';
     import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
     import { track } from '@vercel/analytics';
 
