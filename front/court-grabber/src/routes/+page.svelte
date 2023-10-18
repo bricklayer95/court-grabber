@@ -69,8 +69,8 @@
     </div>
 
     <div class="w-full px-9 md:px-20">
-        <h1 class="light-green-text mt-8 md:mt-20">Say goodbye to the hassle of booking tennis courts. No planning needed.<!--<span class="flex flex-col justify-center"><div class="cool-border"><div class="inner-cool-border"></div></div> hard as rock.</span>--></h1>
-        <h2 class="text-gray-400 w-full mb-12 mt-3 ">Our software automatically books courts, so you never have to to worry about securing a court ahead of others. Get early access below.</h2>
+        <h1 class="light-green-text mt-8 md:mt-16">Say goodbye to the hassle of booking tennis courts. No planning needed.<!--<span class="flex flex-col justify-center"><div class="cool-border"><div class="inner-cool-border"></div></div> hard as rock.</span>--></h1>
+        <h2 class="text-gray-400 w-full mb-8 mt-3 ">Our software automatically books courts, so you never have to to worry about securing a court ahead of others. Get early access below.</h2>
     
 
         <div class="relative z-20 w-full md:w-1/2 foldInput bg-transparent border border-gray-500 rounded-full flex">
@@ -336,7 +336,7 @@
 
     @media (min-width: 768px) { 
     h1 {
-        font-size: 5.4rem;
+        font-size: 5rem;
     }
 
     h2 {
