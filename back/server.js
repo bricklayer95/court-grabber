@@ -26,9 +26,6 @@ app.post("/reserve", (req, res) => {
 
 });
 
-app.get("/confirmation/:name/:date", async (req, res) => {
-  await checkForConfirmation(req.name, req.date);
-});
 
 
 

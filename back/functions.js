@@ -14,6 +14,12 @@ function formatDate(inputDate) {
       return formattedDate;
 }
 
+function getRandomItem(arr) {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    const item = arr[randomIndex];
+    return item;
+}
+
 //IP Rotation Setup
 /*
 const { Actor } = require("apify");
@@ -30,4 +36,4 @@ const run = async () => {
 }
 run();*/
 
-module.exports = {formatDate};
+module.exports = {formatDate, getRandomItem};
