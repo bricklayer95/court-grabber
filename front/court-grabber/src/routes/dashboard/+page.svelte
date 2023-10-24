@@ -2,7 +2,6 @@
   import SidebarNav from "$lib/components/SidebarNav.svelte";
   import tennisBall from "$lib/assets/tennisBall.png";
   import tennisBallNoColor from "$lib/assets/tennisBallNoColor.png";
-  import tate from "$lib/assets/tate.mp4"
 </script>
 
 <SidebarNav/>
@@ -22,7 +21,7 @@
 
       <!-- svelte-ignore a11y-media-has-caption -->
       <video class="mb-14 lg:mb-0 w-full lg:w-4/5 bg-gray-600" controls>
-        <source src={tate} type="video/mp4">
+        <source src="" type="video/mp4">
         Your browser does not support the video tag.
       </video>
 
