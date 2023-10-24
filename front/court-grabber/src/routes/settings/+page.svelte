@@ -2,6 +2,14 @@
     import SidebarNav from '$lib/components/SidebarNav.svelte';
 
     let settings = "Billing";
+
+    let switchToBilling = () =>{
+        settings = "Billing"
+    }
+
+    let switchToGeneral = () =>{
+        settings = "General"
+    }
 </script>
 
 <SidebarNav/>
@@ -12,8 +20,8 @@
         <p class="text-gray-600 mx-6 md:mx-0">The Settings placeholder text</p>
         
         <ul class="flex gap-2 border-b-2 border-gray-600 mt-8 mb-10 w-5/6">
-            <li class="bg-gray-300 px-4 py-1.5 rounded-t-md font-medium">General</li>
-            <li class="px-4 py-1.5 rounded-t-md hover:bg-gray-100 hover:cursor-pointer">Billing</li>
+            <li on:click={switchToGeneral} class="{settings === "General" ? "bg-gray-300 font-medium" : ""} px-4 py-1.5 rounded-t-md hover:bg-gray-100 hover:cursor-pointer">General</li>
+            <li on:click={switchToBilling} class="{settings === "Billing" ? "bg-gray-300 font-medium" : ""} px-4 py-1.5 rounded-t-md hover:bg-gray-100 hover:cursor-pointer">Billing</li>
         </ul>
 
         {#if settings === "General"}
