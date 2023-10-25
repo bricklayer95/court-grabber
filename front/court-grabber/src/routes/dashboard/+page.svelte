@@ -12,11 +12,12 @@
       <p class="text-gray-500 text-xl md:text-2xl mb-14 md:mb-10">Helper Text</p>
     
       <div class="flex gap-4 mb-12">
-        <a href="#_" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-green-100 border border-green-500 rounded-lg shadow-sm cursor-pointer hover:text-white bg-gradient-to-br from-green-500 via-green-500 to-green-600">
+        <a href="/reserve" class="inline-flex items-center justify-center px-5 py-3 md:py-4 text-base font-medium text-center text-green-100 border border-green-500 rounded-lg shadow-sm cursor-pointer hover:text-white bg-gradient-to-br from-green-500 via-green-500 to-green-600">
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
           <span class="relative flex justify-center items-center">Book Court</span>
         </a>
-        <a href="#_" class="inline-flex items-center px-6 py-3 text-gray-500 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-gray-600">Schedule Courts <img src="https://img.icons8.com/ios-filled/150/9e9e9e/planner.png" class="ml-2.5 w-5" alt=""></a>
+
+        <a href="/bookings" class="inline-flex items-center px-6 py-3 md:py-4 text-gray-500 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-gray-600">Your Bookings<img src="https://img.icons8.com/ios-filled/150/9e9e9e/planner.png" class="ml-2.5 w-5" alt=""></a>
       </div>
 
       <!-- svelte-ignore a11y-media-has-caption -->
@@ -25,8 +26,8 @@
         Your browser does not support the video tag.
       </video>
 
-      <div class="mt-20">
-        <p class="block text-lg font-medium leading-6 text-gray-900 mb-2.5">Book 5 courts, get one on us</p>
+      <div class="mb-10 lg:mb-0 mt-10">
+        <p class="block text-xl font-medium leading-6 text-gray-900 mb-3">Book 5 courts, get one on us</p>
         <div class="flex h-12">
           <img src={tennisBall} alt="Tennis Ball">
           <img src={tennisBall} alt="Tennis Ball">
@@ -34,7 +35,7 @@
           <img src={tennisBallNoColor} alt="Tennis Ball">
           <img src={tennisBallNoColor} alt="Tennis Ball">
         </div>
-        <p class="block font-medium leading-6 text-gray-900 mt-2">3 More To Go</p>
+        <p class="block font-medium leading-6 text-gray-900 mt-2.5">3 More To Go</p>
       </div>
     </div>
 

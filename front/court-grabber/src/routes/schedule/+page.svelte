@@ -24,6 +24,7 @@
 
 <SidebarNav/>
 
+<!--
 <div class="p-4 sm:ml-64 pt-20 bg-white h-screen">
     <div class="flex items-center justify-center content-center flex-col">
         <ol class="ol hidden md:flex md:w-1/2 text-sm font-medium text-center text-black sm:text-base mx-auto mb-10">
@@ -228,7 +229,6 @@
     </div>
 </div>
 
-<style>
+<style></style>
 
-    
-</style>
+-->

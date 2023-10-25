@@ -75,20 +75,20 @@
           </a>
         </li>
         <li>
-          <a href="/schedule" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
-            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-              <path d="M10.959 3.503a1 1 0 0 0-1.918 0l-3 10a1 1 0 0 0 .919 1.354h6.162a1 1 0 0 0 .92-1.355l-3-10Z"/>
-              <path d="M15 13a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/>
-            </svg>
-            <span class="ml-3">Schedule Court</span>
-          </a>
-        </li>
-        <li>
           <a href="/bookings" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
             <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
               <path d="M10.995 0a.995.995 0 0 0-.995.995V19.005a.995.995 0 0 0 .995.995h.01a.995.995 0 0 0 .995-.995V.995a.995.995 0 0 0-.995-.995h-.01Z"/>
             </svg>
             <span class="ml-3">Your Bookings</span>
+          </a>
+        </li>
+        <li>
+          <a href="" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+              <path d="M10.959 3.503a1 1 0 0 0-1.918 0l-3 10a1 1 0 0 0 .919 1.354h6.162a1 1 0 0 0 .92-1.355l-3-10Z"/>
+              <path d="M15 13a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/>
+            </svg>
+            <span class="ml-3">Help <!--Rename--></span>
           </a>
         </li>
         <li>

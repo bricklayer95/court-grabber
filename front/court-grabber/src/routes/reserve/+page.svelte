@@ -68,18 +68,28 @@
 
         if(step === 1){
             loading = true;
-            
 
-            getDoc(doc(db, request.park, startDate)).then(res =>{
-                data = res.data();
-                defaultCourt = Object.values(data)[0];
-                //SORT FOR ORDER OF TIME
-                availableSlots = Object.keys(defaultCourt.timeslots).filter((timeslot) => !defaultCourt.timeslots[timeslot].booked);
-                courts = Object.keys(data);
+            try{
+                getDoc(doc(db, request.park, startDate)).then(res =>{
+                    data = res.data();
+                    console.log(data)
+                    if(Object.keys(data).length === 0){
+                        throw new Error("No Courts Found in DB")
+                    }
+                    defaultCourt = Object.values(data)[0];
+                    //SORT FOR ORDER OF TIME
+                    availableSlots = Object.keys(defaultCourt.timeslots).filter((timeslot) => !defaultCourt.timeslots[timeslot].booked);
+                    courts = Object.keys(data);
+                    loading = false;
+                    step++;
+                })
+                return;
+            }catch(err){
+                console.log(err);
+                alert("We apologize for the inconvenience, however there are currently no available courts at your selected park")
                 loading = false;
-                step++;
-            })
-            return;
+                return;
+            }
         }
 
         //Is this nescessary??
@@ -235,12 +245,16 @@
                         <div class="relative mt-2 rounded-md shadow-sm">
                             <div class="relative">
                                 {#if loading === false}
-                                    <select bind:value={request.court} class="block w-full rounded-md border-0 py-2.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6" id="reason">
-                                        <option value="Any">Any Court</option>
-                                        {#each courts as court, i}
-                                            <option value="{i + 1}">{court}</option>
-                                        {/each}
-                                    </select>
+                                    {#if courts}
+                                        <select bind:value={request.court} class="block w-full rounded-md border-0 py-2.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6" id="reason">
+                                            <option value="Any">Any Court</option>
+                                            {#each courts as court, i}
+                                                <option value="{i + 1}">{court}</option>
+                                            {/each}
+                                        </select>
+                                    {:else}
+                                        <h1>Sorry we are all out of courts</h1>
+                                    {/if}
                                 {:else}
                                     <div role="status">
                                         <svg aria-hidden="true" class="inline w-7 h-7 text-gray-200 animate-spin dark:text-gray-600 fill-gray-600 dark:fill-gray-300" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -257,7 +271,7 @@
 
                     <div class="grid space-y-2 w-5/6">
                         <p class="mt-3 mb-1 font-medium text-md leading-6 text-gray-900" >Available Times {availableSlots.length > 1 ? "(Select as many as you would like)" : ""}</p>
-                        {#if availableSlots}
+                        {#if !availableSlots.length === 0}
                             {#each availableSlots as slot, i}
                                 {#if loading === false}
                                     <label for={slot} class="flex p-5 block w-full bg-white border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 text-gray-400">
@@ -275,7 +289,7 @@
                                 {/if}
                             {/each}
                         {:else}
-                            <h1>No Available Slots Sorry About that</h1>
+                            <h1>No Available Slots. Sorry About that</h1>
                         {/if}
                     </div>
                     
