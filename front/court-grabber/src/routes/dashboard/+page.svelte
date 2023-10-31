@@ -12,12 +12,12 @@
       <p class="text-gray-500 text-xl md:text-2xl mb-14 md:mb-10">Helper Text</p>
     
       <div class="flex gap-4 mb-12">
-        <a href="/reserve" class="inline-flex items-center justify-center px-5 py-3 md:py-4 text-base font-medium text-center text-green-100 border border-green-500 rounded-lg shadow-sm cursor-pointer hover:text-white bg-gradient-to-br from-green-500 via-green-500 to-green-600">
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        <a href="/reserve" class="inline-flex items-center justify-center px-5 py-2.5 md:py-3.5 text-base font-medium text-center text-green-100 border border-green-500 rounded-lg shadow-sm cursor-pointer hover:text-white bg-gradient-to-br from-green-500 via-green-500 to-green-600">
+          <svg class="w-5 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
           <span class="relative flex justify-center items-center">Book Court</span>
         </a>
 
-        <a href="/bookings" class="inline-flex items-center px-6 py-3 md:py-4 text-gray-500 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-gray-600">Your Bookings<img src="https://img.icons8.com/ios-filled/150/9e9e9e/planner.png" class="ml-2.5 w-5" alt=""></a>
+        <a href="/bookings" class="inline-flex items-center px-6 py-2.5 md:py-3.5 text-gray-500 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-gray-600">Your Bookings<img src="https://img.icons8.com/ios-filled/150/9e9e9e/planner.png" class="ml-2.5 w-5" alt=""></a>
       </div>
 
       <!-- svelte-ignore a11y-media-has-caption -->

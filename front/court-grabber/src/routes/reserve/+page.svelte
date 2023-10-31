@@ -11,7 +11,7 @@
     //Variables
     let curDate = new Date();
     let currentMonth = curDate.getMonth();
-    let startDate = "10-8-23"; //use request.date to track everything even default
+    let startDate = "10-28-2023"; //use request.date to track everything even default
     let step = 1;
     let defaultCourt;
     let availableSlots;
@@ -203,6 +203,7 @@
                         <div class="relative">
                             <select bind:value={request.park} class="text-sm block w-full rounded-md border-0 py-2.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6" id="reason">
                                 <option value="Latta">Latta Park</option>
+                                <option value="Col Beatty Park">Col Beatty Park</option>
                                 <option value="Freedom">Freedom Park</option>
                                 <option value="Veterans">Veterans Park</option>
                                 <option value="Jeff Adams">Jeff Adams</option>
