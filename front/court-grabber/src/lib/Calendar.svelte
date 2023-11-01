@@ -7,10 +7,16 @@
 
     //Variables
     export let availableDates;
-    console.log(availableDates)
+    export let possibleDates;
+    console.log(possibleDates);
     let curDate = new Date();
     let currentMonth = curDate.getMonth();
-    let selectedDay = curDate.getDate();
+    let selectedDay = possibleDates[0];
+    let formattedDate;
+
+    dispatch("selectDate", {
+        date: possibleDates[0],
+    });
 
 
     //Functions
@@ -23,16 +29,26 @@
     }
     let backMonth = () =>{
         if(currentMonth > 0){
-            currentMonth--
+            currentMonth--;
         } else{
             currentMonth = 11;
         }
     }
 
     let selectDate = (day)=>{
-        selectedDay = day;
+        if(!possibleDates.includes(`${currentMonth + 1}-${day + 1}-23`)){
+            alert("This date is no longer avaliable");
+            return;
+        }
+
+        if(`${currentMonth + 1}-${day + 1}-23` === selectedDay){
+            selectedDay = undefined;
+            return;
+        }
+
+        selectedDay = `${currentMonth + 1}-${day + 1}-23`;
         dispatch("selectDate", {
-            date: `${10}-${day + 1}-23`, //change to `${currentMonth + 1}-${day + 1}-23`
+            date: `${currentMonth + 1}-${day + 1}-23`, //change to `${currentMonth + 1}-${day + 1}-23`
         });
     }
 </script>
@@ -107,10 +123,10 @@
                             <td class="pt-6" on:click={()=>{selectDate(i)}}>
                                 <div class="px-2 py-2 cursor-pointer flex w-full justify-center">
                                 {#if i + 1 <= months[currentMonth].days}
-                                    {#if i === selectedDay}
+                                    {#if `${currentMonth + 1}-${i + 1}-23` === selectedDay}
                                         <a  role="link" tabindex="0" class="focus:outline-none  focus:ring-2 focus:ring-offset-2 focus:ring-green-700 focus:bg-green-600 hover:bg-green-600 text-base w-8 h-8 flex items-center justify-center font-medium text-white bg-green-700 rounded-full">{i + 1}</a>
                                     {:else}
-                                        <p class="text-base text-gray-500 font-medium">{i + 1}</p>
+                                        <p class="{possibleDates.includes(`${currentMonth + 1}-${i + 1}-23`) ? "text-gray-550 font-semibold" : "text-gray-200"}">{i + 1}</p>
                                     {/if}
                                 {/if}
                                 </div>

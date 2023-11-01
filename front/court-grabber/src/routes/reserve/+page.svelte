@@ -2,7 +2,7 @@
     import SidebarNav from '$lib/components/SidebarNav.svelte';
     import { onMount } from 'svelte';
     import { db } from "$lib/firebase";
-    import { onSnapshot, updateDoc, getDoc, getDocs, doc, setDoc, collection, arrayUnion } from "firebase/firestore";
+    import { onSnapshot, updateDoc, getDoc, getDocs, doc, setDoc, collection, arrayUnion, query } from "firebase/firestore";
     import {months} from "$lib/utils.js";
     import {authStore} from "../../store/store";
     import Calendar from '$lib/Calendar.svelte';
@@ -11,13 +11,14 @@
     //Variables
     let curDate = new Date();
     let currentMonth = curDate.getMonth();
-    let startDate = "10-28-2023"; //use request.date to track everything even default
+    let startDate = "11-3-23"; //use request.date to track everything even default
     let step = 1;
     let defaultCourt;
     let availableSlots;
     let data;
     let loading = false;
     let courts;
+    let possibleDates = [];
     let request = {
         name: "",
         park: "Latta", //Default Park Set to Latta
@@ -35,8 +36,8 @@
 
     let selectDate = (day)=>{
         request.date = day;
-        try{
             getDoc(doc(db, request.park, request.date)).then(res =>{
+                    console.log(request.date)
                     loading = true;
                     data = res.data();
                     defaultCourt = Object.values(data)[0];
@@ -44,10 +45,11 @@
                     availableSlots = Object.keys(defaultCourt.timeslots).filter((timeslot) => !defaultCourt.timeslots[timeslot].booked);
                     courts = Object.keys(data);
                     loading = false;
+                }).catch(err =>{
+                    console.log("An Error Occured");
+                    loading = false;
+                    //availableSlots = []; So it shows no Avaliable Courts Sorry about that
                 })
-        }catch(err){
-            console.log("An Error Occured")
-        }
     }
 
     let next = async () =>{
@@ -68,28 +70,38 @@
 
         if(step === 1){
             loading = true;
-
-            try{
                 getDoc(doc(db, request.park, startDate)).then(res =>{
                     data = res.data();
-                    console.log(data)
-                    if(Object.keys(data).length === 0){
+                    if(!data || Object.keys(data).length === 0){
                         throw new Error("No Courts Found in DB")
                     }
                     defaultCourt = Object.values(data)[0];
+                    console.log(defaultCourt)
                     //SORT FOR ORDER OF TIME
                     availableSlots = Object.keys(defaultCourt.timeslots).filter((timeslot) => !defaultCourt.timeslots[timeslot].booked);
+
                     courts = Object.keys(data);
+                    let testQuery = query(collection(db, request.park));
+                    testQuery = query(
+                        testQuery
+                    );
+                    
+                    getDocs(testQuery).then(res =>{
+                        for(let item of res.docs){
+                            possibleDates.push(item.id);
+                        }
+
+                        startDate = possibleDates[0];
+
+                        loading = false;
+                        step++;
+                    })
+                    
+                }).catch(err => {
                     loading = false;
-                    step++;
-                })
+                    alert("We apologize for the inconvenience, however there are currently no available courts at your selected park")
+                });
                 return;
-            }catch(err){
-                console.log(err);
-                alert("We apologize for the inconvenience, however there are currently no available courts at your selected park")
-                loading = false;
-                return;
-            }
         }
 
         //Is this nescessary??
@@ -272,7 +284,7 @@
 
                     <div class="grid space-y-2 w-5/6">
                         <p class="mt-3 mb-1 font-medium text-md leading-6 text-gray-900" >Available Times {availableSlots.length > 1 ? "(Select as many as you would like)" : ""}</p>
-                        {#if !availableSlots.length === 0}
+                        {#if availableSlots.length}
                             {#each availableSlots as slot, i}
                                 {#if loading === false}
                                     <label for={slot} class="flex p-5 block w-full bg-white border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 text-gray-400">
@@ -298,7 +310,7 @@
 
                 <div class="w-full lg:w-1/2 pt-10">
                     <div class="flex flex-col justify-center items-center px-4 lg:px-14">
-                        <Calendar availableDates={data} on:selectDate={(e)=>{selectDate(e.detail.date)}}/>
+                        <Calendar availableDates={data} possibleDates={possibleDates} on:selectDate={(e)=>{selectDate(e.detail.date)}}/>
                     </div>
                     <div class="max-w-sm w-full flex mt-5 gap-1 pr-6 justify-end mb-6 lg:mb-0">
                         <button class="text-black transform p-4 rounded-xl self-end font-semibold" on:click={back}>Back</button>
