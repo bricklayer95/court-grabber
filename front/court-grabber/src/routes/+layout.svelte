@@ -62,6 +62,6 @@
     });
 </script>
 
-<PricingTable/>
+<slot />
 
 
