@@ -8,6 +8,7 @@
     import { auth, db } from "$lib/firebase";
     import { getDoc, doc, setDoc } from "firebase/firestore";
     import { authHandlers, authStore } from "../store/store";
+    import PricingTable from "$lib/components/PricingTable.svelte"
 
     const nonAuthRoutes = ["/register", "/login", "/"];
 

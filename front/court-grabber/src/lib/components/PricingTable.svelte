@@ -1,7 +1,8 @@
 <main class="relative min-h-screen flex flex-col justify-center bg-slate-50 overflow-hidden">
         <div class="w-full max-w-6xl mx-auto px-4 md:px-6 py-24">
 
-            <!-- Pricing table component -->
+            <h1 class="text-4xl font-semibold ml-20 mb-20">Choose a Plan</h1>
+            
             <div>
             
                 <!-- Pricing toggle -->
