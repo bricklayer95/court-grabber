@@ -1,6 +1,10 @@
 <script>
     import SidebarNav from '$lib/components/SidebarNav.svelte';
     import SettingsWindow from '$lib/components/SettingsWindow.svelte';
+    import {authStore} from "../../store/store"
+
+    import { db } from "$lib/firebase";
+    import { onSnapshot, updateDoc, getDoc, getDocs, doc, setDoc, collection, arrayUnion, query } from "firebase/firestore";
 
     let activeWindow = "General Details";
     let previousWindow;
@@ -13,6 +17,10 @@
         }
         e.target.style.backgroundColor = "#d4d4d4"
         previousWindow = e.target;
+    }
+
+    let save = async (data) =>{
+        await setDoc(doc(db, "users", $authStore.user.uid), {details: data.detail}, {merge: true})
     }
 
 </script>
@@ -43,7 +51,7 @@
     
 
     <div class="h-full flex-1">
-        <SettingsWindow {activeWindow}/>        
+        <SettingsWindow {activeWindow} on:save={save}/>        
     </div>
 </div>
 
