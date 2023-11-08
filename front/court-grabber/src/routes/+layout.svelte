@@ -9,8 +9,6 @@
     import { getDoc, doc, setDoc } from "firebase/firestore";
     import { authHandlers, authStore } from "../store/store";
 
-    import PricingTable from "$lib/PricingTable.svelte";
-
     const nonAuthRoutes = ["/register", "/login", "/"];
 
     onMount(() => {

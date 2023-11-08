@@ -92,17 +92,15 @@
                     </div>
                     </div>
                 </div>
-            
-                
-            
+
                 <div class="mt-6 flex items-center justify-end gap-x-6">
                     <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
                     <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
                 </div>
             </form>
         {:else if settings === "Billing"}
-        <h2 class="w-5/6 text-left md:mx-8 lg:mx-0 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">Your Court Bookings</h2>
-        <p class="w-5/6 text-left text-gray-600 mx-6 md:mx-0">Check here to see your most recent court bookings</p>
+            <h2 class="w-5/6 text-left md:mx-8 lg:mx-0 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">Your Court Bookings</h2>
+            <p class="w-5/6 text-left text-gray-600 mx-6 md:mx-0">Check here to see your most recent court bookings</p>
 
             <div class="mt-8 md:mt-10 flex w-5/6 flex-wrap gap-6 pb-10">
                 <a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
