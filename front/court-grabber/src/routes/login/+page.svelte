@@ -10,7 +10,7 @@
     try{
       await authHandlers.login(email, password);
       //log vercel login event
-      //window.location.href = "/dashboard";
+      window.location.href = "/dashboard";
     }catch(err){
       alert("There was an unexpected error logging in. Please try again.");
     }

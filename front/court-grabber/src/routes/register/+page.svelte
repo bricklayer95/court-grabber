@@ -15,7 +15,7 @@
       try{
         await authHandlers.signup(email, password);
         //log vercel signup event
-        //window.location.href = "/dashboard";
+        window.location.href = "/dashboard";
       }catch(err){
         alert("There was an unexpected error", err)
       }

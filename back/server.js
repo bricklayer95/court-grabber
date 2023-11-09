@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const puppeteer = require("puppeteer-extra");
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 const { addSlotToDB } = require("./addToDB");
+import { updateSubscriptionStatus } from "./updateSubscriptionStatus";
 puppeteer.use(StealthPlugin());
 
 const login = require("./login");
@@ -101,6 +102,7 @@ app.post("/reserveV3", async (req, res) => {
   res.send("Donezo");
 });
 
+
 app.post('/webhook', express.json({type: 'application/json'}), (request, response) => {
   const event = request.body;
 
@@ -109,21 +111,18 @@ app.post('/webhook', express.json({type: 'application/json'}), (request, respons
     case 'payment_intent.succeeded':
       const paymentIntent = event.data.object;
       console.log(event.data)
-      // Then define and call a method to handle the successful payment intent.
-      // handlePaymentIntentSucceeded(paymentIntent);
+      //await updateSubscriptionStatus(userUid, status)
       break;
     case 'payment_method.attached':
       const paymentMethod = event.data.object;
-      
-      // Then define and call a method to handle the successful attachment of a PaymentMethod.
-      // handlePaymentMethodAttached(paymentMethod);
+      //await updateSubscriptionStatus(userUid, status)
       break;
     // ... handle other event types
     default:
       console.log(`Unhandled event type ${event.type}`);
   }
 
-  // Return a response to acknowledge receipt of the event
+  
   response.json({received: true});
 });
 

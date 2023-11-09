@@ -8,7 +8,7 @@
     import { auth, db } from "$lib/firebase";
     import { getDoc, doc, setDoc } from "firebase/firestore";
     import { authHandlers, authStore } from "../store/store";
-    import PricingTable from "$lib/components/PricingTable.svelte"
+    import SubscriptionHandler from "$lib/components/SubscriptionHandler.svelte"
 
     const nonAuthRoutes = ["/register", "/login", "/"];
 
@@ -39,7 +39,7 @@
                 //SETUP THIS STORE!!!!!!!!
                 dataToSetToStore = {
                     email: user.email,
-                    todos: [],
+                    subscription: "New User" //Could Be Paid, unpaid, canceled, ect
                 };
                 await setDoc(userRef, dataToSetToStore, { merge: true });
             } else {
@@ -59,8 +59,20 @@
         });
         return unsubscribe;
     });
+
+    if($authStore.user){
+        console.log($authStore.data.subscription)
+    }
 </script>
 
-<PricingTable />
+
+{#if !$authStore.data.subscription || $authStore.data.subscription === "Paid"}
+    <slot />
+{:else }
+    <SubscriptionHandler status={$authStore.data.subscription}/>
+{/if}
+    
+
+
 
 
