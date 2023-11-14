@@ -7,12 +7,13 @@
     let fullNameErr;
     let emailErr;
     let email;
-    let anotherField;
     let password;
+    let passwordErr;
     let checkPassword;
+    let checkPasswordErr;
     let step = 1;
 
-    let next = () => {
+    let next = async () => {
       if(step === 1 && !fullName){
         fullNameErr = "Please enter a full name";
         return;
@@ -21,9 +22,45 @@
       if(step === 2 && !email){
         emailErr = "Please enter an email";
         return;
-      } else if (step ===2 && !validEmail(email)){
+      }
+
+      if (step ===2 && !validEmail(email)){
         emailErr = "Please enter a valid email";
         return;
+      }
+
+      if(step === 3 && !password){
+        passwordErr = "Please enter a password";
+        return;
+      } else{
+        passwordErr = undefined;
+      }
+
+      if(step === 3 && password.trim().length < 6){
+        passwordErr = "Please enter a password longer than 6 characters";
+        return;
+      } else{
+        passwordErr = undefined;
+      }
+
+      if(step === 3 && !checkPassword){
+        checkPasswordErr = "Please enter a check password";
+        return;
+      }else{
+        checkPasswordErr = undefined;
+      }
+
+      if(step === 3 && password !== checkPassword){
+        checkPasswordErr = "Please make sure passwords match";
+        return;
+      }else{
+        checkPasswordErr = undefined;
+      }
+
+      if(step === 3){
+        await authHandlers.signup(email, password);
+        //log vercel signup event
+        window.location.href = "/dashboard";
       }
 
       step++;
@@ -113,33 +150,58 @@
                   <button on:click={next} type="button" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Next</button>
                 </div>
               {:else if step === 3}
-                <div>
-                  <div class="flex items-center justify-between">
-                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-                  </div>
-                  <div class="mt-2">
-                    <input id="password" name="password" type="password" autocomplete="current-password" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                  </div>
+                <div class="w-full h-3 mx-auto -mt-1.5 mb-12 bg-gray-200 rounded-full">
+                  <div class="h-3 bg-green-600 rounded-full" style="width: 95%"></div>
                 </div>
+                {#if !passwordErr}
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                    </div>
+                    <div class="mt-2">
+                      <input bind:value={password} id="password" name="password" type="password" autocomplete="current-password" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                  </div>
+                {:else}
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                    </div>
+                    <div class="mt-2">
+                      <input bind:value={password} id="password" name="password" type="password" autocomplete="current-password" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-2 ring-inset ring-red-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                      <p class="text-red-400 ml-1 mt-1 text-xs font-medium">{passwordErr}</p>
+                    </div>
+                  </div>
+                {/if}
 
-                <div>
-                  <div class="flex items-center justify-between">
-                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Confirm Password</label>
+                {#if !checkPasswordErr}
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Check Password</label>
+                    </div>
+                    <div class="mt-2">
+                      <input bind:value={checkPassword} id="password" name="password" type="password" autocomplete="current-password" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
                   </div>
-                  <div class="mt-2">
-                    <input id="password" name="password" type="password" autocomplete="current-password" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                {:else}
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Check Password</label>
+                    </div>
+                    <div class="mt-2">
+                      <input bind:value={checkPassword} id="password" name="password" type="password" autocomplete="current-password" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-2 ring-inset ring-red-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6">
+                      <p class="text-red-400 ml-1 mt-1 text-xs font-medium">{checkPasswordErr}</p>
+                    </div>
                   </div>
+                {/if}
+
+                <div class="mt-12">
+                  <button on:click={next} type="button" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create your account</button>
                 </div>
               {/if}
         
               
             </form>
-
-            {#if step === 3}
-              <div class="mt-8">
-                <button type="button" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create your account</button>
-              </div>
-            {/if}
         
             <p class="mt-10 text-center text-sm text-gray-500">
               Already have an account?
