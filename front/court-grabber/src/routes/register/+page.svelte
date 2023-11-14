@@ -1,14 +1,42 @@
 <script>
-    import logo from '$lib/assets/logo.png';
-    import oldguy from '$lib/assets/oldguy.png';
+    import tennisBall from '$lib/assets/tennisBall.png';
+    import { crossfade, draw, fade, fly, slide } from 'svelte/transition';
     import { authHandlers } from '../../store/store';
 
+    let fullName;
+    let fullNameErr;
+    let emailErr;
     let email;
     let anotherField;
     let password;
     let checkPassword;
+    let step = 1;
 
-    
+    let next = () => {
+      if(step === 1 && !fullName){
+        fullNameErr = "Please enter a full name";
+        return;
+      }
+
+      if(step === 2 && !email){
+        emailErr = "Please enter an email";
+        return;
+      } else if (step ===2 && !validEmail(email)){
+        emailErr = "Please enter a valid email";
+        return;
+      }
+
+      step++;
+    }
+
+    function validEmail(em) {
+      const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$/;
+      return emailRegex.test(em);
+    }
+
+    let back = () => {
+      step--;
+    }
 
     const register = async () =>{
       console.log(email, password)
@@ -23,62 +51,119 @@
 </script>
 
 
-<div class="w-screen h-screen flex">
-    <div class="w-1/2 h-full m-0 p-0 bg-slate-600">
-        <img class="w-full" src={oldguy} alt="">
-    </div>
+<div class="w-screen h-screen flex md:bg-gray-200 md:pt-2 md:pb-2.5 md:pr-3">
+  <div class="hidden md:flex flex-1 h-full justify-center items-center">
+      <img class="w-3/5" src="https://clipart.coolclips.com/480/vectors/tf05110/CoolClips_peop3505.png" alt="">
+  </div>
 
-    <div class="w-1/2 h-full m-0 p-0">
-        <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-            <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-              <img class="mx-auto h-10 w-auto" src={logo} alt="Court Grabber Offical Logo">
-              <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Create Your Account</h2>
-            </div>
-          
-            <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-              <form class="space-y-6" action="#" method="POST">
-                <div>
-                  <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
-                  <div class="mt-2">
-                    <input bind:value={email} id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                  </div>
-                </div>
-
-                <div>
-                    <label for="anotherField" class="block text-sm font-medium leading-6 text-gray-900">Another Field</label>
-                    <div class="mt-2">
-                      <input bind:value={anotherField} id="anotherField" name="email" type="anotherField" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+  <div class="box-width h-full rounded-xl bg-white m-0 p-0">
+      <div class="flex min-h-full flex-col px-6 justify-center md:justify-start gap-0 md:gap-4 lg:px-8">
+          <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+            <img class="mt-6 md:mt-60 mx-auto h-12 w-auto" src={tennisBall} alt="Court Grabber Offical Logo">
+            <h2 class="mt-8 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">Start your 14 day free trial</h2>
+            <p class="text-gray-400 mt-1 text-center mb-4">Get started in a few quick steps</p> <!--Placeholder helper text-->
+          </div>
+        
+          <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+            <form class="space-y-6">
+              {#if step === 1}
+                {#if !fullNameErr}
+                  <div>
+                    <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Full Name</label>
+                    <div class="mt-2 mb-10">
+                      <input bind:value={fullName} placeholder="Don Q" id="name" name="name" type="text" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
+                  </div>
+                {:else}
+                  <div>
+                    <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Full Name</label>
+                    <div class="mt-2 mb-10">
+                      <input transition:fade bind:value={fullName} placeholder="Don Q" id="name" name="name" type="text" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-2 ring-inset ring-red-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                      <p class="text-red-400 ml-1 mt-1 text-xs font-medium">{fullNameErr}</p>
+                    </div>
+                  </div>
+                {/if}
+                
+                <div class="mt-12">
+                  <button on:click={next} type="button" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Next</button>
                 </div>
-          
+
+                {:else if step === 2}
+                  <div class="w-full h-3 mx-auto -mt-1.5 mb-12 bg-gray-200 rounded-full">
+                    <div class="h-3 bg-green-600 rounded-full" style="width: 50%"></div>
+                  </div>
+                {#if !emailErr}
+                    <div>
+                      <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+                      <div class="mt-2 mb-10">
+                        <input bind:value={email} placeholder="donquavious.lajackson@gmail.com" id="email" name="email" type="email" autocomplete="email" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                      </div>
+                    </div>
+                {:else}
+                    <div>
+                      <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+                      <div class="mt-2 mb-10">
+                        <input transition:fade bind:value={email} placeholder="donquavious.lajackson@gmail.com" id="email" name="email" type="email" autocomplete="email" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-2 ring-inset ring-red-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-red-600 sm:text-sm sm:leading-6">
+                        <p class="text-red-400 ml-1 mt-1 text-xs font-medium">{emailErr}</p>
+                      </div>
+                    </div>
+                {/if}
+
+                <div class="mt-12">
+                  <button on:click={next} type="button" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Next</button>
+                </div>
+              {:else if step === 3}
                 <div>
                   <div class="flex items-center justify-between">
                     <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                   </div>
                   <div class="mt-2">
-                    <input bind:value={password} id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <input id="password" name="password" type="password" autocomplete="current-password" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                   </div>
                 </div>
 
                 <div>
-                    <div class="flex items-center justify-between">
-                      <label for="checkPassword" class="block text-sm font-medium leading-6 text-gray-900">Confim Password</label>
-                    </div>
-                    <div class="mt-2">
-                      <input bind:value={checkPassword} id="checkPassword" name="checkPassword" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
+                  <div class="flex items-center justify-between">
+                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Confirm Password</label>
                   </div>
-          
-                <div>
-                  <button on:click={register} type="button" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+                  <div class="mt-2">
+                    <input id="password" name="password" type="password" autocomplete="current-password" required class="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  </div>
                 </div>
-              </form>
-          
-              <p class="mt-10 text-center text-sm text-gray-500">
-                Already a Member?
-                <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Login </a>
-              </p>
-            </div>
+              {/if}
+        
+              
+            </form>
+
+            {#if step === 3}
+              <div class="mt-8">
+                <button type="button" class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create your account</button>
+              </div>
+            {/if}
+        
+            <p class="mt-10 text-center text-sm text-gray-500">
+              Already have an account?
+              <a href="/login" class="font-semibold leading-6 text-green-600 hover:text-green-700">Login</a>
+            </p>
           </div>
         </div>
+    </div>
 </div>
+
+<style>
+  .box-width{
+    width: 100%;
+  }
+
+  @media (min-width: 768px) { 
+    .box-width{
+      width: 50%;
+    }
+  }
+
+  @media (min-width: 1024px) { 
+    .box-width{
+      width: 35%;
+    }
+  }
+</style>

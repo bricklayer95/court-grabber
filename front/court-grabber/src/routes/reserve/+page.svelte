@@ -175,7 +175,7 @@
 
 <div class="p-4 sm:ml-64 pt-20 bg-white h-screen">
     <div class="flex items-center justify-center content-center flex-col">
-        <ol class="ol hidden md:flex md:w-1/2 text-sm font-medium text-center text-black sm:text-base mx-auto mb-10">
+        <ol class="mt-6 ol hidden md:flex md:w-1/2 text-sm font-medium text-center text-black sm:text-base mx-auto mb-10">
             <li class="flex md:w-full items-center text-green-600 dark:text-green-500 sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
                 <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
                     <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -203,14 +203,14 @@
         </div>
             <div class="w-5/6 md:w-3/4 lg:w-1/2 flex flex-col">
                 <div class="mb-6">
-                    <label for="startDate" class="block text-sm font-medium leading-6 text-gray-900">What is the name of the event?</label>
+                    <label for="startDate" class="block text-sm font-medium leading-6 text-gray-900">What would you like to name the event?</label>
                     <div class="relative mt-2 rounded-md shadow-sm">
                         <input bind:value={request.name} type="text" name="eventName" id="eventName" class="text-sm block w-full rounded-md border-0 py-2.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6" placeholder="Fun time with friends">
                     </div>
                 </div>
 
                 <div class="mb-6">
-                    <label for="reason" class="block text-sm font-medium leading-6 text-gray-900">What park?</label>
+                    <label for="reason" class="block text-sm font-medium leading-6 text-gray-900">Please choose a park</label>
                     <div class="relative mt-2 rounded-md shadow-sm">
                         <div class="relative">
                             <select bind:value={request.park} class="text-sm block w-full rounded-md border-0 py-2.5 pl-3 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:leading-6" id="reason">
