@@ -6,11 +6,11 @@
 
 <div class="p-4 sm:ml-64 pt-20 bg-white h-screen">
     <div class="mt-6 flex flex-col justify-center items-center w-full">
-        <h1 class="mt-16 mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">How can we best assist you?</h1>
+        <h1 class="text-center mt-4 md:mt-8 lg:mt-16 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">How can we best assist you?</h1>
 
-        <div class="w-full flex flex-wrap gap-10 justify-center mt-24">
+        <div class="w-full flex flex-wrap gap-7 justify-center mt-12 md:mt-20">
             
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+            <div class="max-w-xs bg-white border border-gray-200 rounded-lg shadow">
                 <a href="#">
                     <img class="rounded-t-lg" src="https://assets-global.website-files.com/5e78f62c08f1bb8c2d788576/6386109f6528fe6ecbe7c97a_a8zkm6bdfzbtq4w4zf6bt52tj50u1q1b.png" alt="" />
                 </a>
@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+            <div class="max-w-xs bg-white border border-gray-200 rounded-lg shadow">
                 <a href="#">
                     <img class="rounded-t-lg mt-3" src="https://www.vmaker.com/assets/img/create_tutorial_videos_og.jpg" alt="" />
                 </a>
@@ -46,7 +46,7 @@
                 </div>
             </div>
 
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+            <div class="max-w-xs bg-white border border-gray-200 rounded-lg shadow">
                 <a href="#">
                     <img class="rounded-t-lg" src="https://images.squarespace-cdn.com/content/v1/5baa81b001232c0e635d0ab9/1555273827135-86XABEZAA8H2206T69C9/questions+to+ask+before+starting+a+customer+service+team" alt="" />
                 </a>
