@@ -5,6 +5,7 @@
 
     import { db } from "$lib/firebase";
     import { onSnapshot, updateDoc, getDoc, getDocs, doc, setDoc, collection, arrayUnion, query } from "firebase/firestore";
+    import { onMount } from 'svelte';
 
     let activeWindow = "General Details";
     let previousWindow;
@@ -19,6 +20,11 @@
         previousWindow = e.target;
     }
 
+    onMount(()=>{
+        const startLi = document.querySelector("#start");
+        startLi.click()
+    })
+
     let save = async (data) =>{
         await setDoc(doc(db, "users", $authStore.user.uid), {details: data.detail}, {merge: true})
     }
@@ -27,31 +33,33 @@
 
 <SidebarNav/>
 
-<div class="p-4 sm:ml-64 pt-20 bg-white h-screen flex">
-    <div class="w-1/4 h-full bg-gray-100 rounded-xl p-3">
+<div class="p-4 sm:ml-64 pt-20 bg-white h-screen flex flex-col lg:flex-row items-center">
+    <div class="w-full lg:w-1/4 pb-14 h-fit lg:h-full bg-gray-50 rounded-xl p-3">
+        <h1 class="mt-4 text-2xl font-medium ml-5">Settings</h1>
         <div>
-            <h2 class="text-gray-500 flex items-center text-lg mt-2"><img class="h-6 w-auto mr-2" src="https://img.icons8.com/fluency-systems-filled/100/888888/country-house.png" alt=""> General Setting</h2>
-            <ul class="flex flex-col gap-5 ml-2 mt-6 font-sm font-medium text-gray-700">
-                <li on:click={changeWindow} class="w-3/4 py-2.5 px-4 hover:bg-gray-300 hover:cursor-pointer rounded-lg transition-all">General Details</li>
-                <li on:click={changeWindow} class="w-3/4 py-2.5 px-4 hover:bg-gray-300 hover:cursor-pointer rounded-lg transition-all">Personal Details</li>
-            </ul>
-
-        </div>
-
-        <div class="mt-20">
-            <h2 class="text-gray-500 flex items-center text-lg mt-2"><img class="h-6 w-auto mr-2" src="https://img.icons8.com/ios-filled/100/888888/wallet.png" alt=""> Billing / Payments </h2>
-            <ul class="flex flex-col gap-5 ml-2 mt-6 font-sm font-medium text-gray-700">
-                <li on:click={changeWindow} class="w-3/4 py-2.5 px-4 hover:bg-gray-300 hover:cursor-pointer rounded-lg transition-all">Recent Transactions</li>
-                <li on:click={changeWindow} class="w-3/4 py-2.5 px-4 hover:bg-gray-300 hover:cursor-pointer rounded-lg transition-all">Subscription</li>
-                <li on:click={changeWindow} class="w-3/4 py-2.5 px-4 hover:bg-gray-300 hover:cursor-pointer rounded-lg transition-all">Payment Methods</li>
+            <ul class="flex flex-row flex-wrap gap-2 lg:flex-col ml-2 mt-6 font-sm font-medium text-gray-700">
+                <li on:click={changeWindow} id="start" class="w-1/4 text-center py-2.5 lg:text-left lg:px-4 hover:bg-gray-300 hover:cursor-pointer rounded-lg transition-all">General Details</li>
+                <li on:click={changeWindow} class="text-center py-2.5 lg:text-left lg:px-4 hover:bg-gray-300 hover:cursor-pointer rounded-lg transition-all">Personal Details</li>
+                <li on:click={changeWindow} class="text-center py-2.5 lg:text-left lg:px-4 hover:bg-gray-300 hover:cursor-pointer rounded-lg transition-all">Recent Transactions</li>
+                <li on:click={changeWindow} class="text-center py-2.5 lg:text-left lg:px-4 hover:bg-gray-300 hover:cursor-pointer rounded-lg transition-all">Subscription</li>
+                <li on:click={changeWindow} class="text-center py-2.5 lg:text-left lg:px-4 hover:bg-gray-300 hover:cursor-pointer rounded-lg transition-all">Payment Methods</li>
             </ul>
         </div>
     </div>
 
-    
-
-    <div class="h-full flex-1">
+    <div class="h-full w-full lg:flex-1">
         <SettingsWindow {activeWindow} on:save={save}/>        
     </div>
 </div>
 
+<style>
+    li{
+        width: 30%;
+    }
+
+    @media (min-width: 1024px) { 
+        li{
+            width: 75%;
+        }
+    }
+</style>

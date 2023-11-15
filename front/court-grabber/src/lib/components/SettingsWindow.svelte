@@ -44,22 +44,22 @@
 
 {#if activeWindow === "General Details"}
     <div class="flex w-full justify-between mt-2">
-        <div class="ml-14">
+        <div class="mt-7 lg:ml-14">
             <h1 class="text-xl font-semibold">General Details</h1>
-            <p class="text-gray-500 mr-10 text-sm">The settings below are completely optional, but will help to build a stronger profile.</p>
+            <p class="hidden md:block text-gray-500 mr-10 text-sm">The settings below are completely optional, but will help to build a stronger profile.</p>
         </div>
 
-        <div class="flex">
-            <button type="button" class="text-gray-800 bg-gray-200 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Cancel</button>
-            <button on:click={save} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save</button>
+        <div class="mt-6 flex">
+            <button class="text-gray-800 bg-gray-200 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Cancel</button>
+            <button on:click={save} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save</button>
         </div>
     </div>
 
-    <div class="ml-16 mt-12 w-3/4">
+    <div class="lg:ml-16 md:mt-12 w-full lg:w-3/4">
         <form>
             <div class="space-y-12">
             <div class="">
-                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="mt-4 md:mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-4">
                     <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
                     <div class="mt-2">
@@ -77,7 +77,7 @@
                     <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
                 </div>
         
-                <div class="col-span-full">
+                <div class="col-span-full mb-20">
                     <label for="photo" class="block text-sm font-medium leading-6 text-gray-900">Photo</label>
                     <div class="mt-2 flex items-center gap-x-3">
                     <svg class="h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -92,22 +92,22 @@
 
 {:else if activeWindow === "Personal Details"}
     <div class="flex w-full justify-between mt-2">
-        <div class="ml-14">
+        <div class="mt-7 lg:ml-14">
             <h1 class="text-xl font-semibold">Personal Details</h1>
-            <p class="text-gray-500 text-sm mr-10">The settings below are completely optional, but will help to build a stronger profile.</p>
+            <p class="hidden md:block text-gray-500 mr-10 text-sm">The settings below are completely optional, but will help to build a stronger profile.</p>
         </div>
 
-        <div class="flex">
-            <button type="button" class="text-gray-800 bg-gray-200 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Cancel</button>
-            <button on:click={save} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save</button>
+        <div class="mt-6 flex">
+            <button class="text-gray-800 bg-gray-200 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Cancel</button>
+            <button on:click={save} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save</button>
         </div>
     </div>
 
-    <div class="ml-16 mt-12 w-3/4">
+    <div class="lg:ml-16 md:mt-12 w-full lg:w-3/4">
         <form>
             <div class="space-y-12">
             <div>
-                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div class="mt-4 md:mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-3">
                     <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
                     <div class="mt-2">
@@ -161,7 +161,7 @@
                     </div>
                 </div>
         
-                <div class="sm:col-span-2">
+                <div class="sm:col-span-2 mb-20">
                     <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">ZIP / Postal code</label>
                     <div class="mt-2">
                     <input bind:value={data.zip} type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -174,19 +174,19 @@
 
 {:else if activeWindow === "Recent Transactions"}
     <div class="flex w-full justify-between mt-2">
-        <div class="ml-14">
+        <div class="mt-7 lg:ml-14">
             <h1 class="text-xl font-semibold">Recent Transactions</h1>
-            <p class="text-gray-500 text-sm mr-10">Check here to your most recent transactions</p>
+            <p class="hidden md:block text-gray-500 mr-10 text-sm">Check here to view your most recent transactions</p>
         </div>
 
-        <div class="flex">
-            <button type="button" class="text-gray-800 bg-gray-200 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Cancel</button>
-            <button on:click={save} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save</button>
+        <div class="mt-6 flex">
+            <button class="text-gray-800 bg-gray-200 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Cancel</button>
+            <button on:click={save} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save</button>
         </div>
     </div>
 
-    <div class="ml-16 mt-12 w-3/4">
-            <div class="w-5/6 mt-8 md:mt-3 flex flex-wrap gap-6 pb-10">
+    <div class="lg:ml-16 mt-12 lg:w-3/4">
+            <div class="lg:w-5/6 mt-8 md:mt-3 flex flex-wrap gap-6 pb-10">
                 <a href="#" class="block max-w-sm p-6 pb-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 ">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Latta Park Court #4 @ 4:00-5:00 PM</h5>
                     <p class="font-normal text-gray-600 mb-3">Total: $5.00</p>
@@ -206,25 +206,26 @@
     </div>
 
 {:else if activeWindow === "Subscription"}
+
     <div class="flex w-full justify-between mt-2">
-        <div class="ml-14">
+        <div class="mt-7 lg:ml-14">
             <h1 class="text-xl font-semibold">Subscription</h1>
-            <p class="text-gray-500 text-sm mr-10">Manage your subscription here</p>
+            <p class="hidden md:block text-gray-500 mr-10 text-sm">Manage your subscription here</p>
         </div>
 
-        <div class="flex">
-            <button type="button" class="text-gray-800 bg-gray-200 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Cancel</button>
-            <button on:click={save} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save</button>
+        <div class="mt-6 flex">
+            <button class="text-gray-800 bg-gray-200 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Cancel</button>
+            <button on:click={save} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save</button>
         </div>
     </div>
 
-    <div class="ml-16 mt-10">
+    <div class="lg:ml-16 mt-10">
         <main class="relative flex flex-col justify-center h-full">
             <div class="w-full h-full flex flex-col items-center justify-center">
             
                 <div>
                     <h3 class="text-xl font-semibold mb-6">Plan Options</h3>
-                    <div class="flex flex-wrap justify-center items-center gap-8 h-1/2">
+                    <div class="flex flex-wrap justify-center items-center gap-5 h-1/2">
                 
                         <!-- Pricing tab 1 -->
                         <div class="max-w-xs h-full">                                
@@ -376,7 +377,7 @@
                 
                 <div class="mt-10">
                     <h3 class="text-xl font-semibold mb-6">Payment Details</h3>
-                    <div class="flex flex-wrap gap-10">
+                    <div class="flex flex-wrap flex-col gap-10">
                         <div class="w-fit h-fit p-5 bg-gray-100 rounded-xl">
                             <div class="flex justify-between mb-6 gap-16">
                                 <h4 class="font-semibold text-lg">Latest Payment</h4>
@@ -399,7 +400,7 @@
                             </div>
                         </div>
 
-                        <div class="w-fit h-fit p-5 bg-gray-100 rounded-xl">
+                        <div class="w-fit h-fit p-5 bg-gray-100 rounded-xl mb-20">
                             <div class="flex justify-between mb-6 gap-16">
                                 <h4 class="font-semibold text-lg">Next Payment</h4>
                                 <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Manage Next Payment</button>
@@ -428,19 +429,19 @@
     </div>
 {:else if activeWindow === "Payment Methods"}
     <div class="flex w-full justify-between mt-2">
-        <div class="ml-14">
-            <h1 class="text-xl font-semibold">Payment Methods</h1>
-            <p class="text-gray-500 text-sm mr-10">Check here to view, update, remove you payment methods</p>
+        <div class="mt-7 lg:ml-14">
+            <h1 class="text-xl font-semibold">Payments Methods</h1>
+            <p class="hidden md:block text-gray-500 mr-10 text-sm">Check here to view, update, remove you payment methods</p>
         </div>
 
-        <div class="flex">
-            <button type="button" class="text-gray-800 bg-gray-200 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Cancel</button>
-            <button on:click={save} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save</button>
+        <div class="mt-6 flex">
+            <button class="text-gray-800 bg-gray-200 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Cancel</button>
+            <button on:click={save} class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Save</button>
         </div>
     </div>
 
-    <div class="ml-16 mt-12 w-full">
-        <div class="mt-8 md:mt-10 flex w-5/6 flex-wrap gap-6 pb-10">
+    <div class="lg:ml-16 mt-12 w-full">
+        <div class="mt-8 md:mt-10 flex w-full lg:w-5/6 justify-center md:justify-start flex-wrap gap-6 pb-10">
             <a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">Amex ending in 4316</h5>
                 <img class="w-10 h-auto" src="https://www.svgrepo.com//show/328148/amex.svg" alt="">
