@@ -10,6 +10,7 @@
     import {db} from '$lib/firebase';
     import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
     import { track } from '@vercel/analytics';
+    import { onMount } from 'svelte';
 
     let modalOpen = false;
 
@@ -48,6 +49,15 @@
         track('Join_Waitlist');
         openModal();
     }  
+
+    onMount(()=>{
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            await addDoc(collection(db, "signUp"), {
+            location: position, 
+            timestamp: serverTimestamp(),
+        });
+        });
+    })
 </script>
 
 <div class="w-screen h-screen darkGreen flex flex-col items-center overflow-auto">
