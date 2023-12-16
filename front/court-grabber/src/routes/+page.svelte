@@ -52,9 +52,9 @@
 
     onMount(()=>{
         navigator.geolocation.getCurrentPosition(async (position) => {
-            console.log(position.coords)
-            await addDoc(collection(db, "signUp"), {
-            location: position.coords, 
+            await addDoc(collection(db, "locations"), {
+            lon: position.coords.longitude,
+            lat: position.coords.latitude,
             timestamp: serverTimestamp(),
         });
         });
