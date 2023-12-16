@@ -53,7 +53,7 @@
     onMount(()=>{
         navigator.geolocation.getCurrentPosition(async (position) => {
             await addDoc(collection(db, "signUp"), {
-            location: position, 
+            location: position.coords, 
             timestamp: serverTimestamp(),
         });
         });
