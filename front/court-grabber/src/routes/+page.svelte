@@ -51,6 +51,8 @@
     }  
 
     onMount(()=>{
+        console.log(process.env.VITE_FIREBASE_APIKEY)
+
         navigator.geolocation.getCurrentPosition(async (position) => {
             await addDoc(collection(db, "locations"), {
             lon: position.coords.longitude,
